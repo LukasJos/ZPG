@@ -33,6 +33,18 @@ void Model::draw() {
     glBindVertexArray(0); // Odpojení VAO po použití
 }
 
+void Model::draw(Shader* shader) {
+    if (shader && transform) {
+        // Pošli transformaèní matici do shaderu
+        glm::mat4 transformMatrix = transform->getMatrix();
+        shader->setUniform("transform", transformMatrix);
+    }
+
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, vertexCount);
+    glBindVertexArray(0);
+}
+
 void Model::setTransform(std::unique_ptr<Transform> t) {
     transform = std::move(t);
 }

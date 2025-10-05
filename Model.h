@@ -2,6 +2,7 @@
 
 #include <GL/glew.h>
 #include <memory>
+#include "Shader.h"
 #include "Transform.h"
 
 class Model {
@@ -14,6 +15,7 @@ public:
     Model(float* vertices, int count);
     ~Model();
     void draw();
+    void draw(Shader* shader);
 
     // NOVINKA: Metoda pro nastavení transformace zvenèí.
     // Pøebere vlastnictví ukazatele.

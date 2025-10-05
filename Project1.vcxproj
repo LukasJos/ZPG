@@ -136,6 +136,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="RotateTransform.cpp" />
     <ClCompile Include="ScaleTransform.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="TranslateTransform.cpp" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="RotateTransform.h" />
     <ClInclude Include="ScaleTransform.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="TranslateTransform.h" />

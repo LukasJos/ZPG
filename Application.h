@@ -2,17 +2,23 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <vector>
 #include "Shader.h"
 #include "Model.h"
+#include "Scene.h"
 
 class Application {
 private:
     GLFWwindow* window;
     Model* triangle;
-	Model* square;
-	Model* cube;
+    Model* square;
+    Model* cube;
     Shader* purpleShader;
     Shader* greenShader;
+
+    // Scény
+    std::vector<Scene*> scenes;
+    int currentScene;
 
     // Pomocné privátní metody
     bool initializeGLFW();
@@ -27,7 +33,11 @@ public:
     void initialization();
     void createShaders();
     void createModels();
+    void createScenes();  // Nová metoda
     void run();
+
+    // Pro callback
+    void switchToScene(int sceneNumber);
 
     // Statické callback funkce pro GLFW
     static void error_callback(int error, const char* description);
