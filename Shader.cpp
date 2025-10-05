@@ -62,3 +62,31 @@ bool Shader::checkLinkErrors(GLuint program) {
     }
     return true;
 }
+
+void Shader::setUniform(const std::string& name, bool value) {
+    glUniform1i(glGetUniformLocation(programID, name.c_str()), (int)value);
+}
+
+void Shader::setUniform(const std::string& name, int value) {
+    glUniform1i(glGetUniformLocation(programID, name.c_str()), value);
+}
+
+void Shader::setUniform(const std::string& name, float value) {
+    glUniform1f(glGetUniformLocation(programID, name.c_str()), value);
+}
+
+void Shader::setUniform(const std::string& name, const glm::vec2& value) {
+    glUniform2fv(glGetUniformLocation(programID, name.c_str()), 1, glm::value_ptr(value));
+}
+
+void Shader::setUniform(const std::string& name, const glm::vec3& value) {
+    glUniform3fv(glGetUniformLocation(programID, name.c_str()), 1, glm::value_ptr(value));
+}
+
+void Shader::setUniform(const std::string& name, const glm::vec4& value) {
+    glUniform4fv(glGetUniformLocation(programID, name.c_str()), 1, glm::value_ptr(value));
+}
+
+void Shader::setUniform(const std::string& name, const glm::mat4& value) {
+    glUniformMatrix4fv(glGetUniformLocation(programID, name.c_str()), 1, GL_FALSE, glm::value_ptr(value));
+}
