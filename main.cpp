@@ -7,6 +7,7 @@ int main(void) {
     app->initialization();
     app->createShaders();
     app->createModels();
+	app->createScenes();
     app->run();
 
     delete app;

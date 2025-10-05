@@ -26,7 +26,17 @@ void Scene::render() {
     for (size_t i = 0; i < models.size() && i < shaders.size(); ++i) {
         if (shaders[i] && models[i]) {
             shaders[i]->use();
-            models[i]->draw(shaders[i]);  // PØEDEJ SHADER DO DRAW!
+
+            // Nastavit transformaci do shaderu
+            if (models[i]->getTransform()) {
+                glm::mat4 transformMatrix = models[i]->getTransform()->getMatrix();
+                shaders[i]->setUniform("transform", transformMatrix);
+            }
+            else {
+                shaders[i]->setUniform("transform", glm::mat4(1.0f)); // Jednotková matice
+            }
+
+            models[i]->draw();
         }
     }
 }
