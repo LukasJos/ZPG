@@ -1,4 +1,5 @@
 #include "Model.h"
+#include "CompositeTransform.h"
 
 Model::Model(float* vertices, int count) : vertexCount(count) {
     // Vytvoøení a nastavení VBO a VAO
@@ -17,6 +18,8 @@ Model::Model(float* vertices, int count) : vertexCount(count) {
     // Odpojení buffrù
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+    transform = std::make_unique<CompositeTransform>();
 }
 
 Model::~Model() {
@@ -28,4 +31,12 @@ void Model::draw() {
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, vertexCount);
     glBindVertexArray(0); // Odpojení VAO po použití
+}
+
+void Model::setTransform(std::unique_ptr<Transform> t) {
+    transform = std::move(t);
+}
+
+Transform* Model::getTransform() const {
+    return transform.get();
 }
